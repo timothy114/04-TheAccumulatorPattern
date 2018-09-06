@@ -9,8 +9,8 @@ Additionally, it emphasizes that you must
 before you can implement a solution to the problem in Python.
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Timothy Li.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -96,7 +96,7 @@ def draw_parallel_lines(n, point, length, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -109,6 +109,19 @@ def draw_parallel_lines(n, point, length, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
+
+    xstart = point.x
+    y = point.y
+
+    xend = xstart + length
+
+    for i in range(n):
+        start = rg.Point(xstart,y)
+        end = rg.Point(xend,y)
+        line = rg.Line(start,end)
+        line.attach_to(window)
+        y += 30
+    window.render()
 
 
 def run_test_draw_lines():
@@ -174,6 +187,23 @@ def draw_lines(n, point, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
+    #print(n,point)
+    px = point.x
+    py = point.y
+    start  = point
+    yend = py - 100
+    xend = px + 100
+
+    num = 200/(n-1)
+
+    for i in range(n):
+        end = rg.Point(xend,yend)
+        #print(str(start) + " --> " + str(end))
+        #xend += num
+        yend += num
+        line = rg.Line(start,end)
+        line.attach_to(window)
+    window.render()
 
 
 # ----------------------------------------------------------------------
